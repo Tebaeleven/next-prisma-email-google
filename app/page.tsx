@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import getCurrentUser from './actions/getCurrentUser'
 
-export default function Home() {
+export default async function Home() {
+  const currentUser=await getCurrentUser()
   return (
-    <div>
-      Hello
+    <div className='text-center'>
+      {currentUser ? <div>認証されています</div> : <div>認証されていません</div>}
     </div>
   )
 }
